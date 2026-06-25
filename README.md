@@ -6,8 +6,9 @@ O objetivo deste projeto é fornecer uma forma fácil e robusta de unir dois arq
 
 ## 🚀 Como funciona
 
-O script `merge_gtfs.py` utiliza a biblioteca `pandas` para manipular os dados dos arquivos CSV dentro do `.zip` do GTFS. 
+O script `merge_gtfs.py` utiliza a biblioteca `pandas` para manipular os dados dos arquivos CSV dentro do `.zip` do GTFS.
 Ele realiza as seguintes etapas principais:
+
 1. **Identificação**: Analisa o arquivo `routes.txt` para descobrir rotas no GTFS Secundário que não estão presentes no GTFS Base (comparando pela coluna `route_short_name`).
 2. **Prevenção de Colisões**: Para evitar que IDs do GTFS Secundário entrem em conflito com os IDs do GTFS Base (ex: rotas ou paradas com o mesmo ID `"1"`), o script adiciona um sufixo (por padrão `_new_gtfs`) a todos os IDs importados.
 3. **Filtragem em Cascata**: Trazendo apenas as rotas exclusivas, o script filtra os arquivos `trips.txt`, `stop_times.txt`, `stops.txt`, `shapes.txt`, `calendar.txt` e `agency.txt` para extrair somente os dados referentes a essas novas rotas.
@@ -35,11 +36,12 @@ GTFS_NOVO_PATH = 'seu_gtfs_secundario.zip'
 GTFS_SAIDA_PATH = 'nome_do_arquivo_final_mesclado.zip'
 ```
 
-3. Execute o script no terminal:
+1. Execute o script no terminal:
 
 ```bash
 python merge_gtfs.py
 ```
+
 *(Se estiver em um ambiente como PowerShell, você pode usar `python -m merge_gtfs`)*
 
 Ao fim da execução, o arquivo final mesclado será criado no diretório especificado.
